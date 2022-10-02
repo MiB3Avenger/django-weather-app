@@ -1,0 +1,57 @@
+{
+  "../../node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot": {
+    "file": "materialdesignicons-webfont.9bdfaf27.eot",
+    "src": "../../node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot"
+  },
+  "../../node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2": {
+    "file": "materialdesignicons-webfont.da7fba3c.woff2",
+    "src": "../../node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2"
+  },
+  "../../node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff": {
+    "file": "materialdesignicons-webfont.8bded8f4.woff",
+    "src": "../../node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff"
+  },
+  "../../node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf": {
+    "file": "materialdesignicons-webfont.c14484cf.ttf",
+    "src": "../../node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf"
+  },
+  "js/main.js": {
+    "file": "main.4078a1ca.js",
+    "src": "js/main.js",
+    "isEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-755c827c.js"
+    ],
+    "dynamicImports": [
+      "_webfontloader-0250f273.js"
+    ],
+    "css": [
+      "main.5bfcb54d.css"
+    ],
+    "assets": [
+      "materialdesignicons-webfont.9bdfaf27.eot",
+      "materialdesignicons-webfont.da7fba3c.woff2",
+      "materialdesignicons-webfont.8bded8f4.woff",
+      "materialdesignicons-webfont.c14484cf.ttf"
+    ]
+  },
+  "js/test.js": {
+    "file": "test.9b29b206.js",
+    "src": "js/test.js",
+    "isEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-755c827c.js"
+    ]
+  },
+  "__plugin-vue_export-helper-755c827c.js": {
+    "file": "_plugin-vue_export-helper-755c827c.js"
+  },
+  "_webfontloader-0250f273.js": {
+    "file": "webfontloader-0250f273.js",
+    "isDynamicEntry": true
+  },
+  "js/main.css": {
+    "file": "main.5bfcb54d.css",
+    "src": "js/main.css"
+  }
+}

@@ -1,0 +1,14 @@
+$bodyBgColor: lightgray;
+
+* {
+  box-sizing: border-box;;
+}
+
+
+html,
+body {
+  margin: 0;
+  padding: 2rem 3rem;
+  background-color: $bodyBgColor;
+}
+
