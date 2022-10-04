@@ -26,7 +26,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY vite.config.js /code
 COPY package* /code/
-RUN npm ci
+RUN npm install
 
 COPY . .
 

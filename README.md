@@ -47,7 +47,7 @@ If you have 2 terminals you can run:
 ```
 ./manage.py runserver 0:8000
 ```
-and in second terminal
+and in second terminal   
 ```
 npm run dev
 ```
