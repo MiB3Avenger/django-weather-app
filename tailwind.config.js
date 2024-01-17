@@ -3,8 +3,8 @@ export default {
     darkMode: 'class',
     prefix: 'tw-',
     content: [
-        './my_project/templates/base.html',
-        './my_project/templates/**/*.html',
+        './weather_app/templates/base.html',
+        './weather_app/templates/**/*.html',
         './frontend/src/**/*.{js,ts,jsx,tsx,vue}'
     ],
     theme: {

@@ -95,10 +95,9 @@ This will bundle your front-end app and save files in `./frontend/dist`. This fo
 
 While making changes to the project, you may want to keep few things in mind. When wanting to change `my_project` folder to of your choice, you'll have to update the following files with your project folder name.
 
-1. tailwind.config.js
-2. vite.config.js
-3. manage.py
-4. my_project/asgi.py
-5. my_project/wsgi.py
+1. tailwind.config.js2
+2. manage.py
+3. my_project/asgi.py
+4. my_project/wsgi.py
 
 And finally, update `APP_NAME` in `my_project/settings/base.py` to your folder name. This will allow django to recognize project apps easily. If you encounter any issues, please create an issue and I'll do my best to fix your problem.

@@ -14,7 +14,7 @@ env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Application name so we don't have to keep changing folder names manually if we want to rename django root directory.
-APP_NAME = "my_project"
+APP_NAME = "weather_app"
 
 # Cast project dirs as string for future manipulation
 PROJECT_ROOT = BASE_DIR / APP_NAME
