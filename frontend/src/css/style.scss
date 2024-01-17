@@ -1,14 +1,24 @@
-$bodyBgColor: lightgray;
+/* purgecss start ignore */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+/* purgecss end ignore */
 
+@import 'tailwindcss/utilities';
+
+/**
+* Base document rules.
+*/
 * {
-  box-sizing: border-box;;
+    box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
 html,
 body {
-  margin: 0;
-  padding: 2rem 3rem;
-  background-color: $bodyBgColor;
+    margin: 0;
+    padding: 2rem 3rem;
 }
 

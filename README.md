@@ -1,16 +1,12 @@
-# Django vite example
+# Django Weather App
 
-This is example app that combines Django with API endpoints and Vite + Vue with TailwindCSS or Vuetify.
+This is weather app that combines Django with API endpoints and Vite + Vue with TailwindCSS.
 
-Vue components are located in `frontend/js` folder. This app comes with Vue, Vuetify,
-Vuex and Vue router included. Also on demo page we have 2 independent Vue apps along with
-Django rendered elements.
+Vue components are located in `frontend/js` folder. This app comes with Vue, TailwindCSS,
+Vuex and Vue router included.
 
 In places where we have both Django and Vue app, any changes that are made to Vue app, will be
 immediately visible since Vite supports hot module replacement (changes to js, vue and style files).
-
-Another thing to note that in this example project we have used plain CSS along with Less and Sass
-styling files as proof of concept (you should pick one for production and stick with it)
 
 Thanks to [@elrik](https://gitlab.com/elrik/django-vite-example) for initial boilerplate for Django + Vite.
 
@@ -49,6 +45,7 @@ Clone repository, switch dir to the cloned repo. Set up python virtualenv and ac
 After you have activated virtualenv run following commands:
 ```sh
 pip install -r requirements.txt
+python manage.py makemigrations
 python manage.py migrate
 npm install
 npm ci
@@ -95,7 +92,7 @@ This will bundle your front-end app and save files in `./frontend/dist`. This fo
 
 While making changes to the project, you may want to keep few things in mind. When wanting to change `my_project` folder to of your choice, you'll have to update the following files with your project folder name.
 
-1. tailwind.config.js2
+1. tailwind.config.js
 2. manage.py
 3. my_project/asgi.py
 4. my_project/wsgi.py

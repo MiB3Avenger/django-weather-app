@@ -25,8 +25,6 @@ import App from './App.vue'
 /**
  * Style imports.
  */
-import "@app/css/style.css"
-import "@app/css/style.less"
 import "@app/css/style.scss"
 
 /**
@@ -40,6 +38,5 @@ loadFonts()
 createApp(App)
     // Inject application dependencies.
     .use(router)
-    .use(vuetify)
     .use(store)
     .mount('#app')

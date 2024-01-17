@@ -41,5 +41,5 @@ urlpatterns += [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     
     # Else just open vue frontend
-    re_path(r'.*', include('core.urls')),
+    path('', include('core.urls')),
 ]

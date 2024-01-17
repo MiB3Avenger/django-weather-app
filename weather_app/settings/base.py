@@ -77,7 +77,6 @@ INSTALLED_APPS = (
     "corsheaders",
     "rest_framework",
     "drf_yasg",
-    "django_cron",
     'drf_spectacular',
 
     "core",
