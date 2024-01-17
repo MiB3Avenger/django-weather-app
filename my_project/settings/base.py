@@ -13,14 +13,17 @@ env = environ.Env()
 # Get base dir using environ
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# Cast project dirs as string for future manipulation
-PROJECT_ROOT = BASE_DIR / "my_project"
+# Application name so we don't have to keep changing folder names manually if we want to rename django root directory.
+APP_NAME = "my_project"
 
-# This is WSGI sccript prefix, used to resolve urls
+# Cast project dirs as string for future manipulation
+PROJECT_ROOT = BASE_DIR / APP_NAME
+
+# This is WSGI script prefix, used to resolve urls
 APP_PREFIX = env.str("APP_PREFIX", default="/")
 APP_ENV = env.str("APP_ENV", default="local")
 
-ROOT_URLCONF = "my_project.urls.prod"
+ROOT_URLCONF = APP_NAME + ".urls.prod"
 
 sys.path.insert(1, str(PROJECT_ROOT / "apps"))
 
@@ -73,8 +76,12 @@ INSTALLED_APPS = (
     "django_extensions",
     "corsheaders",
     "rest_framework",
+    "drf_yasg",
+    "django_cron",
+    'drf_spectacular',
 
     "core",
+    "api.v1",
 )
 
 MIDDLEWARE = [
@@ -93,7 +100,7 @@ MIDDLEWARE = [
     "core.middleware.AppIdMiddleware",
 ]
 
-WSGI_APPLICATION = "my_project.wsgi.application"
+WSGI_APPLICATION = APP_NAME + ".wsgi.application"
 
 
 TEMPLATES = [
@@ -179,12 +186,15 @@ DEFAULT_FILE_STORAGE = env.str(
 SERVE_MEDIA_FILES = env.bool("SERVE_MEDIA", default=False)
 SERVE_STATIC_FILES = env.bool("SERVE_STATIC", default=False)
 
+# Vendor Path for third party files
+VENDOR_PATH = PROJECT_ROOT / "vendors"
+
 # Where ViteJS assets are built.
 DJANGO_VITE_ASSETS_PATH = BASE_DIR / "frontend" / "dist"
 
 # If use HMR or not.
 DJANGO_VITE_DEV_MODE = DEBUG
-DJANGO_VITE_STATIC_URL_PREFIX = "vite"
+DJANGO_VITE_STATIC_URL_PREFIX = "/"
 
 # Include DJANGO_VITE_ASSETS_PATH into STATICFILES_DIRS to be copied inside
 # when run command python manage.py collectstatic
@@ -202,7 +212,7 @@ LOGGING = {
         "require_debug_false": {
             "()": "django.utils.log.RequireDebugFalse",
         },
-        "skippped_logs": {
+        "skipped_logs": {
             "()": "core.logging_filters.DisabledLogFilter"
         },
     },
@@ -217,7 +227,7 @@ LOGGING = {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
             "formatter": LOGGING_FORMATTER,
-            "filters": ["skippped_logs"],
+            "filters": ["skipped_logs"],
         }
     },
     "root": {"level": "INFO", "handlers": ["console"]},
@@ -239,11 +249,11 @@ DATE_INPUT_FORMATS = (
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.dummy.DummyCache",
-        "KEY_PREFIX": "my_project",
+        "KEY_PREFIX": APP_NAME,
     },
 }
 
-# Add prefix for cookies so that there isn"t mixup of cookies
+# Add prefix for cookies so that there isn't mixup of cookies
 SESSION_COOKIE_PATH = APP_PREFIX
 CSRF_COOKIE_PATH = APP_PREFIX
 
@@ -260,7 +270,7 @@ DEBUG_TOOLBAR_PATCH_SETTINGS = env.bool("DT_PATCH_SETTINGS", default=False)
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly",
+        
     ],
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
@@ -269,4 +279,5 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS":
         "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 25,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }

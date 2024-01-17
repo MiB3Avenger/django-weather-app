@@ -26,3 +26,4 @@ git_version
 *.sublime-workspace
 node_modules*
 *.todo
+dist/

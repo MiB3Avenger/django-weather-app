@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import Test from './Test'
+import Test from './Test.vue'
 
 createApp(Test)
-  .mount('#app1');
+    .mount('#app1');

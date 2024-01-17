@@ -6,7 +6,7 @@ DJANGO_VITE_DEV_MODE = DEBUG
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=["*"])
 
-ROOT_URLCONF = "my_project.urls.local"
+ROOT_URLCONF = APP_NAME + ".urls.local"
 
 # We want full dbugging in development
 LOGGING["root"]["level"] = "DEBUG"

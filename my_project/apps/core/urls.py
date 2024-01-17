@@ -1,14 +1,12 @@
-from django.urls import re_path
+from django.urls import re_path, path
 
 from .views import (
     ping,
-    WelcomeView,
-    ViteExample,
+    Index,
 )
 
 app_name = 'core'
 urlpatterns = [
     re_path(r'^ping/?$', ping, name="ping"),
-    re_path(r'^/?$', WelcomeView.as_view(), name="welcome"),
-    re_path(r'^vite/?$', ViteExample.as_view(), name="vite_example"),
+    path('', Index.as_view(), name="index"),
 ]

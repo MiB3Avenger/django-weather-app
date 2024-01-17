@@ -12,7 +12,7 @@ if app_prefix:
         app_prefix += "/"
 
 urlpatterns = [
-    re_path(app_prefix, include('my_project.urls.base')),
+    re_path(app_prefix, include(settings.APP_NAME + '.urls.base')),
 ]
 
 if getattr(settings, "SERVE_MEDIA_FILES", False):
@@ -26,3 +26,9 @@ if getattr(settings, "SERVE_STATIC_FILES", False):
         settings.STATIC_URL,
         document_root=settings.STATIC_ROOT
     )
+
+
+urlpatterns += [
+    # Else just open vue frontend
+    re_path(r'.*', include('core.urls')),
+]

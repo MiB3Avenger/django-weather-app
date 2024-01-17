@@ -11,20 +11,12 @@ def ping(request):
     return HttpResponse("ok")
 
 
-class WelcomeView(TemplateView):
-    """
-    Starter view
-    """
-
-    template_name = "core/welcome.html"
-
-
-class ViteExample(TemplateView):
+class Index(TemplateView):
     """
     Vite example app here
     """
-
-    template_name = "core/vite_example.html"
+    title = "Project Name"
+    template_name = "core/index.html"
 
     @property
     def test_data(self) -> dict:

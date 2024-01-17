@@ -18,10 +18,10 @@ def global_variables(request):
     """
     return {
         "global_variables": {
-            "staticUrl": settings.STATIC_URL,
-            "mediaUrl": settings.MEDIA_URL,
+            "staticUrl": request.build_absolute_uri(settings.STATIC_URL),
+            "mediaUrl": request.build_absolute_uri(settings.MEDIA_URL),
             "urls": {
-                "welcome": reverse("core:welcome"),
+                "api": request.build_absolute_uri(reverse("api.v1:default")),
             },
         }
     }
