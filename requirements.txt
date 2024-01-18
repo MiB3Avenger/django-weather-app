@@ -4,6 +4,8 @@ pytz  # https://github.com/stub42/pytz
 python-slugify==6.1.2
 ipython==7.34.0
 ptyprocess==0.7.0
+pyowm==3.3.0
+mysqlclient==2.2.1
 
 # Django
 # -----------------------------------------------------------------------------
