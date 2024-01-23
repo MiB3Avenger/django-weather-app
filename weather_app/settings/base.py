@@ -33,6 +33,9 @@ SECRET_KEY = env.str(
     default="z()@=u8hjeg1w864d$g*1pm$#7l0m5txos!qppg4x+p=lnwzx3"
 )
 
+# OpenWeatherMap API Key
+OWM_API_KEY = "4effa380a1a92c0c7585c996ce210754"
+
 # SECURITY WARNING: don"t run with debug turned on in production!
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
 

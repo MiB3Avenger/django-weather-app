@@ -18,7 +18,6 @@ import { createApp } from 'vue'
  */
 import router from './router'
 import store from './store'
-import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 import App from './App.vue'
 

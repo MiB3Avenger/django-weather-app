@@ -11,9 +11,8 @@ class CityData(models.Model):
     # Even though city with longer names are not widely used, but we'll prepare for them anyway.
     name = models.CharField(max_length=170)
     lat = models.FloatField()
-    long = models.FloatField()
+    lon = models.FloatField()
     country = models.CharField(max_length=2)
-    state = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
