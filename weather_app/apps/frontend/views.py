@@ -106,7 +106,7 @@ def storeCity(request):
         # Get data in dictionary format.
         cityWeather = frontendService.getCityWeather(coord={'lat': cityData.lat, 'lon': cityData.lon}).to_dict()
         # Store city weather into database.
-        cityDetails = frontendService.storeCityDetails(cityData=cityData, data=cityWeather)
+        cityDetails = frontendService.storeCityDetails(cityData=cityData, data=cityWeather, cityDetail=cityDetails)
     
     return Response({"success": True, "weather": cityDetails.detail}, status=status.HTTP_200_OK)
 
@@ -145,6 +145,6 @@ def searchCityDetail(request, name: str, country: str):
         # Get data in dictionary format.
         cityWeather = frontendService.getCityWeather(coord={'lat': cityData.lat, 'lon': cityData.lon}).to_dict()
         # Store city weather into database.
-        cityDetails = frontendService.storeCityDetails(cityData=cityData, data=cityWeather)
+        cityDetails = frontendService.storeCityDetails(cityData=cityData, data=cityWeather, cityDetail=cityDetails)
         
     return Response({"success": True, "city": CityDataSerializer(cityData).data, "weather": cityDetails.detail})

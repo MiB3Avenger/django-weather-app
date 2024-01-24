@@ -10,14 +10,16 @@ import { useStore } from 'vuex'
 
 // Composable imports.
 import useFrontend from '@app/js/composables/api/frontend'
+import WeatherCard from '@app/js/components/WeatherCard.vue'
 
 export default {
     name: 'Detail',
+    components: {
+        WeatherCard,
+    },
     setup() {
         const store = useStore()
         const frontend = useFrontend()
-
-        const kel = 273.1
 
         let city = computed(() => store.getters.city)
 
@@ -28,34 +30,33 @@ export default {
             detail.value = {city: response.data.city, weather: response.data.weather}
         })
 
-        return { kel, detail, city }
+        return { detail, city }
     }
 };
 </script>
 
 <template>
     <div>
-        <h1>Forecast for <span>{{ city.name }}</span></h1>
-        <div>
-            <ul>
-                <li v-for="result in detail.value.weather">
-                    {{ new Date(result.reference_time * 1000).toUTCString() }},
-                    {{ result.clouds }},
-                    {{ result.status }},
-                    <span style="text-transform: capitalize;">{{ result.detailed_status }}</span>,
-                    {{ result.humidity }},
-                    {{ result.wind.speed }},
-                    {{ result.wind.deg }},
-                    {{ result.wind.gust }},
-                    {{ (result.temperature.temp - kel).toFixed(2) }},
-                    {{ (result.temperature.temp_max - kel).toFixed(2) }},
-                    {{ (result.temperature.temp_min - kel).toFixed(2) }},
-                    {{ (result.temperature.feels_like - kel).toFixed(2) }},
-                    {{ result.pressure.press }} Ba,
-                    {{ result.pressure.sea_level }} Ba
-                </li>
-            </ul>
-
+        <h1>Forecast in <span>{{ city.name }}</span> for next 5 days at 3 hours interval</h1>
+        <div class="weather-container">
+            <WeatherCard v-for="result in detail.value?.weather" :detail="result"></WeatherCard>
         </div>
     </div>
 </template>
+
+<style scoped>
+.weather-container {
+    display: flex;
+    width: -webkit-fill-available;
+    width: fill-available;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+span {
+    font-style: italic;
+}
+</style>
