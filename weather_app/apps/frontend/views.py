@@ -91,15 +91,14 @@ def storeCity(request):
         return Response({"success": False, "errors": json.loads(error)}, status=status.HTTP_400_BAD_REQUEST)
     
     # Fetch city, and if it's not stored, then create new row and get it's details.
-    cityData = frontendService.fetchCityData(body['name'])
+    cityData = frontendService.fetchCityData(name=body['name'], slug=body['slug'])
     
     if not cityData:
         data = body.copy()
-        data['name'] = data['name'].lower()
         data['country'] = data['country'].upper()
         cityData = frontendService.storeCityData(data) # Returns city data.
     
-    # Check if we have details, and hasn't been updated in last hour.
+    # Check if we have details, and hasn't been updated in last 3 hours.
     cityDetails = frontendService.fetchCityDetails(cityData)
     
     # If city details is not present or 3 hours has been passed since last update, then we'll fetch new data.
@@ -114,7 +113,7 @@ def storeCity(request):
 
 @swagger_auto_schema(
         method="GET",
-        operation_id="v1/frontend/search/city-detail/{name}",
+        operation_id="v1/frontend/search/city-detail/{country}/{name}",
         operation_description="Search for city details endpoint",
     )
 @api_view(["GET"])
@@ -133,7 +132,7 @@ def searchCityDetail(request, name: str, country: str):
     frontendService = FrontendService()
     
     # Get city data by name
-    cityData = frontendService.fetchCityData(name=name,country=country)
+    cityData = frontendService.fetchCityData(slug=name,country=country)
     
     if not cityData:
         return Response({"success": False}, status=status.HTTP_404_NOT_FOUND)

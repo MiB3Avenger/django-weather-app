@@ -141,7 +141,7 @@ class FrontendService:
         else:
             return False, cityDetailForm.errors.as_json()
     
-    def fetchCityData(self, name: str, country: str = None) -> CityData|None:
+    def fetchCityData(self, name: str = None, slug: str = None, country: str = None) -> CityData|None:
         """
         Fetch city data from our database.
 
@@ -153,9 +153,15 @@ class FrontendService:
         """
         # Simple get CityData object.
         try:
+            if slug and country:
+                return CityData.objects.get(slug__exact=slug, country__exact=country)
+            
+            if name and slug and country:
+                return CityData.objects.get(name__exact=name, slug__exact=slug, country__exact=country)
+                
             if country:
-                return CityData.objects.get(name=name, country=country)
-            return CityData.objects.get(name=name)
+                return CityData.objects.get(name__exact=name, country__exact=country)
+            return CityData.objects.get(name__exact=name)
         except CityData.DoesNotExist:
             return None
         

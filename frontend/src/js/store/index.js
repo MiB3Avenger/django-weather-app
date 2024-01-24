@@ -35,6 +35,9 @@ export default createStore({
         apiRequest(state) {
             return state.apiRequest
         },
+        city(state) {
+            return state.city
+        },
         toast(state) {
             return state.toast
         },

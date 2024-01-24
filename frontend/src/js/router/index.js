@@ -1,11 +1,34 @@
 import { createRouter, createWebHistory} from 'vue-router'
 
-import About from "@app/js/components/About.vue"
-import HelloWorld from "@app/js/components/HelloWorld.vue"
+import Index from "@app/js/views/Index.vue"
+import Detail from "@app/js/views/Detail.vue"
+import FourOhFour from "@app/js/views/FourOhFour.vue"
 
 const routes = [
-    { path: '/', component: HelloWorld },
-    { path: '/about', component: About },
+    {
+        path: '/',
+        name: 'index',
+        component: Index,
+        meta: {
+            title: 'Search for a city!'
+        }
+    },
+    {
+        path: '/city-detail/:country/:name',
+        name: 'city-details',
+        component: Detail,
+        meta: {
+            title: 'City Details'
+        }
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'four-oh-four',
+        component: FourOhFour,
+        meta: {
+            title: 'Uh oh!'
+        }
+    },
 ]
 
 const router = createRouter({
