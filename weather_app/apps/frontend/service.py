@@ -141,21 +141,29 @@ class FrontendService:
         else:
             return False, cityDetailForm.errors.as_json()
     
-    def fetchCityData(self, name: str, country: str = None) -> CityData|None:
+    def fetchCityData(self, name: str = None, slug: str = None, country: str = None) -> CityData|None:
         """
         Fetch city data from our database.
 
         Args:
-            name (str): Name of the city
+            name (str): Name of the city.
+            slug (str): Slugified name of the city.
+            country (str): Name of the country the city is in.
 
         Returns:
             CityData|None: Found city data or None to validate incoming data.
         """
         # Simple get CityData object.
         try:
+            if slug and country:
+                return CityData.objects.get(slug__exact=slug, country__exact=country)
+            
+            if name and slug and country:
+                return CityData.objects.get(name__exact=name, slug__exact=slug, country__exact=country)
+                
             if country:
-                return CityData.objects.get(name=name, country=country)
-            return CityData.objects.get(name=name)
+                return CityData.objects.get(name__exact=name, country__exact=country)
+            return CityData.objects.get(name__exact=name)
         except CityData.DoesNotExist:
             return None
         
@@ -196,7 +204,7 @@ class FrontendService:
         except CityDetail.DoesNotExist:
             return None
         
-    def storeCityDetails(self, cityData: CityData, data: list) -> CityDetail:
+    def storeCityDetails(self, cityData: CityData, data: list, cityDetail: CityDetail = None) -> CityDetail:
         form = {
             'city': cityData,
             'detail': data['weathers']
@@ -205,9 +213,14 @@ class FrontendService:
         # Check for validation, just in case.
         valid, error = self.cityDetailFormValidate(form)
         if valid:
-            cityDetailForm = CityDetailForm(form)
-            
-            cityDetailForm.save()
+            # Get city detail, if it doesn't exists, then we'll create. If it does exist, we'll update.
+            if not cityDetail:
+                cityDetailForm = CityDetailForm(form)
+                
+                cityDetailForm.save()
+            else:
+                updateCityDetail = CityDetail(id=cityDetail.id, city=cityData, detail=data['weathers'], created_at=cityDetail.created_at)
+                updateCityDetail.save()
             
             return self.fetchCityDetails(cityData)
         else:

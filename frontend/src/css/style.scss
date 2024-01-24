@@ -19,6 +19,13 @@ html {
 html,
 body {
     margin: 0;
-    padding: 2rem 3rem;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
+body {
+    min-height: 100vh;
+    padding: 2rem 3rem;
+    background: linear-gradient(120deg, #FEE3BC 23.22%, #F39876 99.52%);
+}

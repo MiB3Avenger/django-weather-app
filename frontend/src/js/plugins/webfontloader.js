@@ -14,7 +14,7 @@ export async function loadFonts () {
 
     webFontLoader.load({
         google: {
-            families: ['Roboto:100,300,400,500,700,900&display=swap'],
+            families: ['Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap'],
         },
     })
 }

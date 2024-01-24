@@ -22,6 +22,10 @@ const localStoragePlugin = store => {
     store.subscribe((mutation, { state }) => {
         localForage.setItem(STORAGE_KEY+"-state", JSON.stringify(state))
     })
+    // Subscribe to city.
+    store.subscribe((mutation, { city }) => {
+        localForage.setItem(STORAGE_KEY+"-city", JSON.stringify(city))
+    })
 }
 
 // Decide whether to create a logger or not based on environment.

@@ -27,6 +27,7 @@ export default {
     isLoading: true,
     // API Request State. We can see if there's a request made or not. Helps for waiting.
     apiRequest: false,
+    city: {},
     // Toast Modal state structure.
     toast: {
         display: false,

@@ -34,6 +34,14 @@ export default {
         commit('resetApiRequest')
     },
 
+    // state.city
+    changeCity({ commit }, state) {
+        commit('changeCity', state)
+    },
+    resetCity({ commit }) {
+        commit('resetCity')
+    },
+
     // state.toast
     setToastData({ commit }, data) {
         commit('setToastData', data)

@@ -54,6 +54,14 @@ export const mutations = {
         state.apiRequest = false
     },
 
+    // state.city
+    changeCity(state, newState) {
+        state.city = newState
+    },
+    resetCity(state) {
+        state.city = {}
+    },
+
     // state.toast
     setToastData(state, data) {
         state.toast = data
