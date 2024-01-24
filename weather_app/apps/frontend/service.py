@@ -146,7 +146,9 @@ class FrontendService:
         Fetch city data from our database.
 
         Args:
-            name (str): Name of the city
+            name (str): Name of the city.
+            slug (str): Slugified name of the city.
+            country (str): Name of the country the city is in.
 
         Returns:
             CityData|None: Found city data or None to validate incoming data.

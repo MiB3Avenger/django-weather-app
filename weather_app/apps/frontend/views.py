@@ -119,11 +119,11 @@ def storeCity(request):
 @api_view(["GET"])
 def searchCityDetail(request, name: str, country: str):
     """
-    _summary_
+    Search for city weather details.
 
     Args:
-        name (str): _description_
-        country (str): _description_
+        name (str): Name of the city.
+        country (str): Name of the country the city is in.
 
     Returns:
         Response
